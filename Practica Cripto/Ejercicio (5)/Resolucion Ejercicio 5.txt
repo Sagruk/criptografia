@@ -1,0 +1,23 @@
+El siguiente hash se corresponde con un SHA3 Keccak del texto “En KeepCoding aprendemos cómo protegernos con criptografía”.  
+  
+bced1be95fbd85d2ffcce9c85434d79aa26f24ce82fbd4439517ea3f072d56fe 
+  
+¿Qué tipo de SHA3 hemos generado? 
+
+    Vemos que la longitud del hash es de 64 caracteres en hex, que se corresponde a 32 bytes, por lo que se corresponde a un SHA3-256
+
+Y si hacemos un SHA2, y obtenemos el siguiente resultado: 
+  
+4cec5a9f85dcc5c4c6ccb603d124cf1cdc6dfe836459551a1044f4f2908aa5d63739506f6468833d77c07cfd69c488823b8d858283f1d05877120e8c5351c833 
+ 
+¿Qué hash hemos realizado? 
+
+    En este caso, dado que la longitud del hash es de 128 caracteres, que se corresponden con 64 bytes, se esta usando un SHA2-512
+
+Genera ahora un SHA3 Keccak de 256 bits con el siguiente texto: “En KeepCoding 
+aprendemos cómo protegernos con criptografía.” ¿Qué propiedad destacarías del hash, 
+atendiendo a los resultados anteriores? 
+
+    El hash creado es: 302be507113222694d8c63f9813727a85fef61a152176ca90edf1cfb952b19bf
+    Vemos que la unica diferencia en el mensaje es el punto final, sin embargo, los hashes creados no se parecen en nada, por lo que no nos es posible deducir el texto del hash o viceversa
+    Tambien apreciamos que el tamaño del hash no varia aunque varie el tamaño del texto

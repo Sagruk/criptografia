@@ -1,0 +1,32 @@
+Tenemos un sistema que usa claves de 16 bytes. Por razones de seguridad vamos a 
+proteger la clave de tal forma que ninguna persona tenga acceso directamente a la clave. 
+Por ello, vamos a realizar un proceso de disociación de la misma, en el cuál tendremos, 
+una clave fija en código, la cual, sólo el desarrollador tendrá acceso, y otra parte en un 
+fichero de propiedades que rellenará el Key Manager. La clave final se generará por 
+código, realizando un XOR entre la que se encuentra en el properties y en el código. 
+ 
+La clave fija en código es A1EF2ABFE1AAEEFF, mientras que en desarrollo sabemos 
+que la clave final (en memoria) es B1AA12BA21AABB12. ¿Qué valor ha puesto el Key 
+Manager en properties para forzar dicha clave final? 
+
+    Sabemos que:
+    k_fija = A1EF2ABFE1AAEEFF
+    k_manager_desarrollo = ?
+    k_final_desarrollo = B1AA12BA21AABB12
+
+    Y sabemos que:
+    k_fija ^ k_manager_desarrollo = k_final_desarrollo
+
+    Dado que XOR es conmutativo, sabemos que: 
+    k_fija ^ k_final_desarrollo = k_manager_desarrollo
+
+    Por lo que:
+    k_manager_desarrollo = 10453805c00055ed
+ 
+La clave fija, recordemos es A1EF2ABFE1AAEEFF, mientras que en producción 
+sabemos que la parte dinámica que se modifica en los ficheros de propiedades es 
+B98A15BA31AEBB22. ¿Qué clave será con la que se trabaje en memoria?
+
+    En esta parte nos faciltan la clave fija y la clave dinamica y nos piden la clave final
+    Haciendo un xor de la clave fija y la clave dinamica
+    k_final_produccion = 18653f05d00455dd

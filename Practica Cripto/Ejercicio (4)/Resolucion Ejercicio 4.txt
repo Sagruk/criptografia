@@ -1,0 +1,25 @@
+Tenemos el siguiente jwt, cuya clave es “KeepCoding”. 
+ 
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvIjoiRmVsaXBlIFJvZHJcdTAwZWRndWV6Iiwicm9sIjoiaXNOb3JtYWwifQ.-KiAA8cjkamjwRUiNVHgGeJU8k2wiErdxQP_iFXumM8 
+ 
+¿Qué algoritmo de firma hemos realizado?  
+
+    Tras analizar la cabecera vemos que se usa un algoritmo HS256
+
+¿Cuál es el body del jwt? 
+
+    Una vez conocemos el algoritmo y conociendo la clave podemos leer el curpo del mensaje
+    {'usuario': 'Felipe Rodríguez', 'rol': 'isNormal'}
+ 
+Un hacker está enviando a nuestro sistema el siguiente jwt: 
+ 
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvIjoiRmVsaXBlIFJvZHJcdTAwZWRndWV6Iiwicm9sIjoiaXNBZG1pbiJ9.-KiAA8cjkamjwRUiNVHgGeJU8k2wiErdxQP_iFXumM8 
+ 
+¿Qué está intentando realizar? 
+
+    Esta tratando de cambiar el rol del usuario
+    {'usuario': 'Felipe Rodríguez', 'rol': 'isAdmin'}
+
+¿Qué ocurre si intentamos validarlo con pyjwt?
+    
+    Al tratar de decodificar el jwt con pyjwt da error ya que la firma no coincide

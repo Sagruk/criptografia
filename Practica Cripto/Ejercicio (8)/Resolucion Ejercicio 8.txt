@@ -1,0 +1,66 @@
+Tenemos la siguiente API REST, muy simple. 
+ 
+Request: 
+ 
+Post /movimientos 
+ 
+Campo       Tipo    Requiere Confidencialidad Observaciones 
+idUsuario   Number  N                         Identificador  
+Usuario     String  S                         Nombre y Apellidos 
+Tarjeta     Number  S   
+  
+Petición de ejemplo que se desea enviar: 
+ 
+{"idUsuario":1,"usuario":"José Manuel Barrio Barrio","tarjeta":4231212345676891} 
+ 
+Response: 
+ 
+ 
+Campo       Tipo    Requiere Confidencialidad   Observaciones 
+idUsuario   Number  N                           Identificador  
+movTarjeta  Array   S                           Formato del ejemplo 
+Saldo       Number  S                           Tendra formato 12300 para indicar 123.00 
+Moneda      String  N                           EUR, DOLLAR 
+ 
+{ 
+  "idUsuario": 1, 
+  "movTarjeta": [{ 
+    "id": 1, 
+    "comercio": "Comercio Juan", 
+    "importe": 5000 
+  }, { 
+    "id": 2, 
+    "comercio": "Rest Paquito", 
+    "importe": 6000 
+  }], 
+  "Moneda": "EUR", 
+  "Saldo": 23400 
+ 
+} 
+ 
+Como se puede ver en el API, tenemos ciertos parámetros que deben mantenerse 
+confidenciales. Así mismo, nos gustaría que nadie nos modificase el mensaje sin que nos 
+enterásemos. Se requiere una redefinición de dicha API para garantizar la integridad y 
+la confidencialidad de los mensajes. Se debe asumir que el sistema end to end no usa 
+TLS entre todos los puntos. 
+  
+¿Qué algoritmos usarías? ¿Serías capaz de hacer un ejemplo en Python de cómo 
+resolverlo? 
+
+  Asumiremos que ya se ha creado un canal seguro y que se ha compartido una clave simetrica entre cliente y servidor 
+    - Usaremos la clave 'KeepCodinng' para firmar el jwt
+    - Usaremos una clave EAS de 16 bytes para cifrar la respuesta: d47361b1377fab9886c3e97424b5357e
+
+  Dividiremos el ejercicio en 2 partes: Lado Cliente y Lado Servidor
+  Para el lado Cliente:
+    - El cliente enviara los datos codificados dentro de un json en b64
+    - La tarjeta y el usuario iran hasheados con un SHA-512 (Seria recomendable usar Keckak si es posible)
+    - Se usara jwt para verificar la integridad de los datos enviados
+
+
+
+  Para el lado Servidor:
+      - El servidor recupera los datos y los compara con su base de datos 
+      - En la base de datos se implementara un salt y un pepper para reforzar la seguridad de los datos
+      - El servidor enviara cifrados los movimientos de la tarjeta y el saldo en ella, usando para ello la clave simetrica compartida
+      - Se usara jwt para verificar la integridad de los datos enviados

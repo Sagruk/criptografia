@@ -1,0 +1,18 @@
+Trabajamos en una empresa de desarrollo que tiene una aplicación web, la cual requiere 
+un login y trabajar con passwords. Nos preguntan qué mecanismo de almacenamiento 
+de las mismas proponemos.  
+ 
+Tras realizar un análisis, el analista de seguridad propone un hash SHA-1. Su 
+responsable, le indica que es una mala opción. ¿Por qué crees que es una mala opción? 
+
+    Porque a día de hoy es un algoritmo vulnerable, ya que presenta fallos por colisión
+ 
+Después de meditarlo, propone almacenarlo con un SHA-256, y su responsable le 
+pregunta si no lo va a fortalecer de alguna forma. ¿Qué se te ocurre? 
+
+    Añadir un salta a la clave hasheada para evitar así las rainbow tables
+
+Parece que el responsable se ha quedado conforme, tras mejorar la propuesta del SHA-
+256, no obstante, hay margen de mejora. ¿Qué propondrías?
+
+    Añadir un pepper a la base de datos para fortalecer los datos guardados

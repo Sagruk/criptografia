@@ -1,0 +1,23 @@
+Dada la clave con etiqueta “cifrado-sim-aes-256” que contiene el keystore. El iv estará 
+compuesto por ceros binarios (“00”). Se requiere obtener el dato en claro 
+correspondiente al siguiente dato cifrado: 
+zcFJxR1fzaBj+gVWFRAah1N2wv+G2P01ifrKejICaGpQkPnZMiexn3WXlGYX5WnNIosy
+KfkNKG9GGSgG1awaZg== 
+ 
+Para este caso, se ha usado un AES/CBC/PKCS7. Si lo desciframos, ¿qué obtenemos? 
+
+    En hex:  4573746f20657320756e206369667261646f20656e20626c6f7175652074c3ad7069636f2e20526563756572646120656c2070616464696e672e
+    El texto en claro es:  Esto es un cifrado en bloque típico. Recuerda el padding.
+
+
+¿Qué ocurre si decidimos cambiar el padding a x923 en el descifrado? 
+
+    Nos devuelve error, ya que en el x923 se añaden tantos '00' -1 al final como indica el ultimo byte, pero en el padding realizado se añade un byte diferente en fuincion de los bytes totales añadidos
+
+¿Cuánto padding se ha añadido en el cifrado? Como truco, estudiar el resultado en 
+hexadecimal, cuando lo imprimas en consola introducir un string para diferenciar el 
+final, como “|*****|”. 
+
+    Se han añadido 6 bytes de padding 
+
+ 

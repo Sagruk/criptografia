@@ -1,0 +1,11 @@
+Nos debemos comunicar con una empresa, para lo cual, hemos decidido usar un 
+algoritmo como el AES/GCM en la comunicación. Nuestro sistema, usa los siguientes 
+datos en cada comunicación con el tercero: 
+ 
+Key:E2CFF885901B3449E9C448BA5B948A8C4EE322152B3F1ACFA0148FB3A426DB72 
+Nonce:9Yccn/f5nJJhAt2S 
+ 
+¿Qué estamos haciendo mal? 
+
+    Se esa utilizando siempre el mismo nonce, por lo que estamos esponiendonos a que se pueda obtener la clave
+    El nonce debe ser unico para cada mensaje

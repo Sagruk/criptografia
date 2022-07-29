@@ -1,0 +1,10 @@
+Calcula el hmac-256 (usando la clave contenida en el KeyStore) del siguiente texto:  
+Siempre existe más de una forma de hacerlo, y más de una solución válida. 
+Se debe evidenciar la respuesta. Cuidado si se usan herramientas fuera de los lenguajes 
+de programación, por las codificaciones es mejor trabajar en hexadecimal. 
+
+    El HMAC-256 del texto es el siguiente: d0b686743822793fb185263f1fa4ded09bd557bcd341ac53e06dad76238c8e09
+    
+ 
+ 
+ 

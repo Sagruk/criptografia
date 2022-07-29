@@ -1,0 +1,13 @@
+Se requiere cifrar el texto “Este curso es de lo mejor que podemos encontrar en el 
+mercado”. La clave para ello, tiene la etiqueta en el keyStore “cifrado-sim-chacha-256”. 
+El nonce “9Yccn/f5nJJhAt2S”.  
+
+    El texto cifrado en B64 es: a+TcvT+2tmbsqKQezZKJfFptIWLb7q3W7w70fDzo3fj8xB86E/8zvtTRyU79V15ZP7vl6pzk5PjhcHJOvw==
+
+¿Cómo podríamos mejorar de forma sencilla el sistema, de tal forma, que no sólo 
+garanticemos la confidencialidad sino, además, la integridad del mismo? Demuestra, tu 
+propuesta por código, así como añade los datos necesarios para evaluar tu solución.
+
+    Para garantizar la integridad del mensaje deberiamos añadir un algoritmo de firma, como por ejemplo el poly1305, ya que el minimo cambio en el mensaje, modificara la firma generada
+    Mensaje cifrado y autenticado en B64 =  EWGrU8t3Mr7pqLjrFz1hGgMkqxhZBXsbqK8nA1gqmkcMXkqzA5OdUsPYPO8asRk1nZo30zieQ56ggemkUQ==
+    El tag que firma la integridad en B64 =  nCKeCjmLhs/PxDUCOfci6w==
